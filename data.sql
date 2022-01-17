@@ -39,6 +39,8 @@ INSERT INTO species (name) VALUES('Pokemon');
 
 INSERT INTO species (name) VALUES('Digimon');
 
+
+
 UPDATE animals SET species_id = 4 WHERE name LIKE '%mon';
 
 UPDATE animals SET species_id = 3 WHERE name NOT LIKE '%mon';
@@ -62,6 +64,8 @@ INSERT INTO vets (name, age, date_of_graduation) VALUES('Stephanie Mendez', 64, 
 
 INSERT INTO vets (name, age, date_of_graduation) VALUES ('Jack Harkness', 38, '2008-6-8');
 
+
+
 INSERT INTO specialization VALUES (1, 3);
 
 INSERT INTO specialization VALUES (3, 3);
@@ -69,6 +73,8 @@ INSERT INTO specialization VALUES (3, 3);
 INSERT INTO specialization VALUES (3, 4);
 
 INSERT INTO specialization VALUES (4, 4);
+
+
 
 INSERT INTO visits VALUES (1, 1, '2020-5-24');
 
@@ -110,3 +116,7 @@ INSERT INTO visits VALUES ( (SELECT id FROM vets WHERE name = 'Maisy Smith'),( S
 
  INSERT INTO visits VALUES ( (SELECT id FROM vets WHERE name = 'William Tatcher'),( SELECT id FROM animals WHERE name = 
 'Blossom'), '2021-1-11');
+
+ INSERT INTO owners (full_name, email) SELECT 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+
+ INSERT INTO visits (animal_id, vet_id, visit_date) SELECT * FROM (SELECT id FROM animals) animals_id , (SELECT id from vets) vets_id, generate_series('1980-01-01'::timestamp,'2021-01-01', '4 hours');
