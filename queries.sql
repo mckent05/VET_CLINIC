@@ -106,7 +106,7 @@ vets.id, vets.name FROM animals JOIN visits ON animals.id = visits.animal_id JOI
 
 SELECT animals.species_id, species.name FROM visits JOIN vets ON visits.vet_id = vets.id JOIN animals ON visits.animal_id = animals.id JOIN species ON animals.species_id=species.id  WHERE vets.name = 'Maisy Smith' GROUP BY (species.name, animals.species_id);
 
-
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animal_id = 4;
 
 
 
